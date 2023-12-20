@@ -1,9 +1,8 @@
     const express = require('express');
 const router = express.Router();
-// const uploadFiles = require('../middlewares/uploadFiles');
 const uploadFiles = require('../middlewares/uploadFiles');
-const adminControllers = require('../controllers/adminControllers');
 
+const adminControllers = require('../controllers/adminControllers');
 
 const validateInput = require('../middlewares/validator');
 const {body}= require ('express-validator')

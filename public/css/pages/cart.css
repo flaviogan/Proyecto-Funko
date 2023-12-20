@@ -10,6 +10,11 @@ button {
     gap: 60px;
 }
 
+.a:hover {
+    color: var(--rojo-70);
+    cursor: pointer;
+}
+
 .cart {
     display: flex;
     flex-direction: column;
@@ -144,7 +149,7 @@ button {
     justify-content: space-between;
 }
 
-.more, .less {
+.more, .less, .items__cart--mas,.items__cart--menos {
     width: 16px;
     height: 16px;
     border: none;
@@ -172,7 +177,23 @@ button {
     flex-shrink: 0;
     background-color: var(--fondo-claro);
     border: none;
+    color: var(--rojo);   
+    font-weight: 700;
+    font-size: var(--font-xsmall);
+    text-transform: uppercase;
+    background-color: var(--primary-solid);
+    color: var(--light-font-solid);
+    padding: var(--spacing-8) var(--spacing-12);
 }
+
+.td__icon--delete {
+    color: var(--rojo);
+}
+.remove:hover {
+    color: var(--rojo-70);
+    cursor: pointer;
+}
+
 
 .resume-cart {
     display: flex;
@@ -234,4 +255,23 @@ button {
 
 .resume-cart input:hover {
     background-color: var(--rojo);
+}
+
+.cart__delete {
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    transition: color .3s ease;
+}
+
+.cart__item--delete {
+    color: red;
+    border: none;
+    font-size: var(--font-30-xlarge);
+}
+
+.cart__item--delete:hover {
+    color: var(--negro-90);
 }

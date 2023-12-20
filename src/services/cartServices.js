@@ -1,6 +1,6 @@
 class CartService {
     static addToCart(cart, item, files, quantity = 1) {
-        cart = cart || [];
+       var cart = cart || [];
         const existingItemIndex = cart.findIndex(cartItem => cartItem.product_id === item.product_id);
 
         if (existingItemIndex !== -1) {
@@ -24,4 +24,74 @@ class CartService {
     }
 }
 
+// Servicio para actualizar la cantidad de un producto en el carrito
+const updateQuantity = async (productId, newQuantity) => {
+    try {
+        // Lógica para actualizar la cantidad en la base de datos
+        await ItemModel.updateQuantity(productId, newQuantity);
+        const response = {
+            isError: false,
+            message: `Cantidad actualizada exitosamente.`
+        };
+        return response;
+    } catch (error) {
+        const errorResponse = {
+            isError: true,
+            message: `Error al actualizar la cantidad: ${error}`
+        };
+        return errorResponse;
+    }
+};
+
+// Servicio para eliminar un producto del carrito
+const deleteCart = async (productId) => {
+    try {
+        // Elimina el producto del carrito en la base de datos
+
+        // Lógica para eliminar el producto del carrito en la base de datos
+        await ItemModel.deleteCart(productId);
+        const response = {
+            isError: false,
+            message: `Producto eliminado exitosamente.`
+        };
+        return response;
+    } catch (error) {
+        const errorResponse = {
+            isError: true,
+            message: `Error al eliminar el producto del carrito: ${error}`
+        };
+        return errorResponse;
+    }
+};
+
+// Configuramos la paginación de productos
+const getPaginated = async (page, limit) => {
+    try {
+        const totalItemsResponse = await ItemModel.getAll();
+        const totalItems = totalItemsResponse.data.length;
+
+        const totalPages = Math.ceil(totalItems / limit);
+
+        const offset = (page - 1) * limit;
+        const response = await ItemModel.getPaginated(offset, limit);
+
+        return {
+            isError: false,
+            data: response.data,
+            totalPages
+        };
+    } catch (error) {
+        console.error('Error en getPaginated:', error);
+        return {
+            isError: true,
+            message: 'Error al obtener datos paginados.'
+        };
+    }
+}
+
+module.exports = {
+    getPaginated,
+    updateQuantity,
+    deleteCart
+};
 module.exports = CartService;

@@ -26,13 +26,15 @@ const createItem = async (item, files) => {
       discount: item.discount,
       sku: item.sku,
       dues: item.dues,
-    // licence_name: item.licence_name,
-    //   image_front: '/' + licence_name + '/' + files[0].filename,
-    //   image_back: '/' + licence_name + '/' + files[1].filename,
+      //licence_name: item.licence_name,
+      image_front: '/' + item.licence_name + '/' + item.images[0],
+      image_back: '/' + item.licence_name + '/' + item.images[0],
 
  
-    image_front: '/' + files[0].filename,
-    image_back: '/' + files[1].filename,
+    // image_front: '/' + files[0].filename,
+    // image_back: '/' + files[1].filename,
+    // image_front: '/' + item.images[0],
+    // image_back: '/' + item.images[1],
       licence_id: item.collection,
       category_id: item.category
   }
@@ -65,7 +67,7 @@ const editItem = async (item, files, id) => {
 
 const deleteItem = async (id) => {
   console.log('toy en itemServices');
-  return await ItemModel.delete({product_id: id});
+  return await ItemModel.deleteItem({product_id: id});
 }
 
 module.exports = {

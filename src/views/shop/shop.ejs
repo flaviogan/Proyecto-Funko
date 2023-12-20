@@ -1,9 +1,10 @@
 <%- include('../partials/header') %>
 <main id="shop" class="container">
   <aside class="shop__filters filters">
+    <form action="#" method="GET" id="search-form">
       <div class="filters__search">
-          <label  class="filters__title" for="search">BUSCAR</label>
-          <input type="text" name="search" id="search" placeholder="item o categoría">
+          <label  class="filters__title" for="buscar">BUSCAR</label>
+          <input type="text" name="buscar" id="buscar" placeholder="item o categoría">
       </div>
       <div class="filters__order">
           <label  class="filters__title" for="orderby">ORDERNAR POR</label>
@@ -42,6 +43,7 @@
               <label for="">FAVORITOS</label>
           </div>
       </div>
+    </form>
   </aside>
   <section class="shop__content">
       <ul class="shop__items">
